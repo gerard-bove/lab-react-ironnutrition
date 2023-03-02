@@ -10,19 +10,16 @@ import Search from './components/Search';
 function App () {
   
   const [foodsVar, setFood] = useState(foods);
-  const [foodsVarCopy, setCopy] = useState(foods);
 
   const newFood = (newFood) => {
-    setFood([newFood, ...foodsVar])
-    setCopy([newFood, ...foodsVar])
+    foods.push(newFood)
+    setFood(foods)
   }
 
   const filterFood = (text) => {
-    if (text === "") {
-      setFood(foodsVarCopy);
-    } else {
-      setFood(foodsVar.filter(food => food.name.toLowerCase().includes(text.toLowerCase())));
-    }
+    
+    setFood(foods.filter(food => food.name.toLowerCase().includes(text.toLowerCase())));
+    
   }
 
   const deleteHandler = (foodName)=>{
