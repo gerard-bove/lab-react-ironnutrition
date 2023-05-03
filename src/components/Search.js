@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Divider, Input } from 'antd';
+import { Input } from 'antd';
 
 function Search({filter}) {
 
@@ -11,12 +11,10 @@ function Search({filter}) {
     }
 
     return (
-        <>
-            <Divider>Search</Divider>
-
-            <label>Search</label>
-            <Input value={filtro} type="text" onChange={filterFood} />
-        </>
+        <div>
+            <p>Search</p>
+            <Input style={{width: '200px', marginBottom: '10px'}} id="searchInput" value={filtro} type="text" onChange={filterFood} />
+        </div>
     );
 }
 

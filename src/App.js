@@ -12,14 +12,11 @@ function App () {
   const [foodsVar, setFood] = useState(foods);
 
   const newFood = (newFood) => {
-    foods.push(newFood)
-    setFood(foods)
+    setFood([newFood, ...foodsVar]);
   }
 
   const filterFood = (text) => {
-    
     setFood(foods.filter(food => food.name.toLowerCase().includes(text.toLowerCase())));
-    
   }
 
   const deleteHandler = (foodName)=>{
@@ -30,9 +27,12 @@ function App () {
     <div className="App">
       <AddFoodForm newFood={newFood}/>
       <Search filter={filterFood}/>
-      {foodsVar.map((food, k) => (
-        <FoodBox key={k} food={food} deleteHandler={deleteHandler}/>
-      ))}
+      <div className='row'>
+        {foodsVar.length > 0 ? foodsVar.map((food, k) => (
+          <FoodBox key={k} food={food} deleteHandler={deleteHandler}/>
+        )) : 
+        <p>Ohhps, there is no more content to show</p>}
+      </div>
     </div>
   )
 }

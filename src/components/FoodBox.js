@@ -1,33 +1,21 @@
-import { Card, Col, Button } from 'antd';
 
-// Iteration 2
 function FoodBox({food: {name, calories, image, servings}, deleteHandler}) {
 
     let totalCalories = calories * servings;
 
-    const deleteFood = () => {
-        const funcionDelete = () => {
-            deleteHandler(name);
-        }
-        return funcionDelete;
-    }
-
     return (
-        <Col>
-        <Card
-            title={name}
-            style={{ width: 230, height: 300, margin: 10 }}
-        >
-            <img src={image} height={60} alt="food" />
-            <p>Calories: {calories}</p>
-            <p>Servings: {servings}</p>
-            <p>
-            <b>Total Calories: {totalCalories} </b> kcal
-            </p>
-            <Button type="primary" onClick={deleteFood()}> Delete </Button>
-        </Card>
-        </Col>
-  );
+        
+        <div className="card col-sm-4 cards-container" style={{width: '18rem'}}>
+            <img src={image} className="card-img-top" alt={name}/>
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">Calories: {calories}</p>
+                <p className="card-text">Servings: {servings}</p>
+                <p className="card-text">Total Calories: {totalCalories}</p>
+                <button type='button' className="btn btn-primary" onClick={()=>deleteHandler(name)}>Delete</button>
+            </div>
+        </div>        
+    );
 }
 
 export default FoodBox;
